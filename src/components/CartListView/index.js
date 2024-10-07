@@ -72,8 +72,29 @@ const CartListView = () => {
   
 
   useEffect(()=>{
+    const getAddToCardData=()=>{
+      let userDetails = JSON.parse(localStorage.getItem('userId'));
+      //console.log(userDetails)
+      axios.post('/getCartList',{'userId':userDetails})
+      .then(res=>{console.log(res.data)
+        //let userDetails = JSON.parse(localStorage.getItem('userId'));
+        //console.log(userDetails)
+        if(res.data[0]!==undefined){
+  
+        setAddToCartList(res.data)
+        }
+  
+      })
+      .catch(err=>{
+        console.log('Caart')
+        if (err.message ==='Network Error'){
+          updateMode('offline')
+        }
+      })
+  
+    }
     getAddToCardData()
-  },[getAddToCardData])
+  },[])
 
   const getAddToCardData=()=>{
     let userDetails = JSON.parse(localStorage.getItem('userId'));

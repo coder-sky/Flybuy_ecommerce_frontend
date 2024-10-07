@@ -16,29 +16,30 @@ const AllProductsSection =()=>{
   console.log(mode)
 
   useEffect(()=>{
-    getProducts()
-  },[getProducts])
-  const getProducts = ()=> {
-    axios.get('/getproducts')
-    .then(res=>{//console.log(res.data)
-      //let userDetails = JSON.parse(localStorage.getItem('userId'));
-      //console.log(userDetails)
+    const getProducts = ()=> {
+      axios.get('/getproducts')
+      .then(res=>{//console.log(res.data)
+        //let userDetails = JSON.parse(localStorage.getItem('userId'));
+        //console.log(userDetails)
+        
+        setProductList(res.data)
+        localStorage.setItem('products',JSON.stringify(res.data))
+  
+      })
+      .catch(err=>{
+        console.log('All p')
+        if (err.message ==='Network Error'){
+          setProductList(JSON.parse(localStorage.getItem('products')))
+         
+          updateMode('offline')
+         
+        }
+      })
       
-      setProductList(res.data)
-      localStorage.setItem('products',JSON.stringify(res.data))
-
-    })
-    .catch(err=>{
-      console.log('All p')
-      if (err.message ==='Network Error'){
-        setProductList(JSON.parse(localStorage.getItem('products')))
-       
-        updateMode('offline')
-       
-      }
-    })
-    
-}
+  }
+    getProducts()
+  },[])
+  
 
 const onChangeSearchInput = (event) =>{
   setSearchInput(event.target.value)
