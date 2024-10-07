@@ -42,7 +42,7 @@ const CartListView = () => {
       quant= quant-1
     axios.post('https://flybuy-ecommerce-backend.onrender.com/decrementCartItme', {'id':parseInt(id),'quantity':quant,'userId':localStorage.getItem('userId')})
     .then(()=>{
-      // console.log('data',state.addToCartList.filter(item => item.id === id).map(item => ({...item,quantity : quant})))})
+      // //console.log('data',state.addToCartList.filter(item => item.id === id).map(item => ({...item,quantity : quant})))})
       // let newArray = (state.addToCartList.filter(item => item.id === id)).map(item => ({...item,quantity : quant}))//state.addToCartList.map(item => ({...item,quantity : quant}))
       // newArray= [...newArray,...state.addToCartList.filter(item => item.id !== id)]
       // setState({addToCartList: newArray});
@@ -59,7 +59,7 @@ const CartListView = () => {
     quant= quant+1
     axios.post('https://flybuy-ecommerce-backend.onrender.com/incrementCartItme', {'id':parseInt(id),'quantity':quant,'userId':localStorage.getItem('userId')})
     .then(()=>{
-      // console.log(res)})
+      // //console.log(res)})
       // //let newArray = state.addToCartList.map(item => ({...item,quantity : quant}))
       // let newArray = (state.addToCartList.filter(item => item.id === id)).map(item => ({...item,quantity : quant}))//state.addToCartList.map(item => ({...item,quantity : quant}))
       // newArray= [...newArray,...state.addToCartList.filter(item => item.id !== id)]
@@ -75,7 +75,7 @@ const CartListView = () => {
       let userDetails = JSON.parse(localStorage.getItem('userId'));
       //console.log(userDetails)
       axios.post('https://flybuy-ecommerce-backend.onrender.com/getCartList',{'userId':userDetails})
-      .then(res=>{console.log(res.data)
+      .then(res=>{//console.log(res.data)
         //let userDetails = JSON.parse(localStorage.getItem('userId'));
         //console.log(userDetails)
         if(res.data[0]!==undefined){
@@ -99,7 +99,7 @@ const CartListView = () => {
     let userDetails = JSON.parse(localStorage.getItem('userId'));
     //console.log(userDetails)
     axios.post('https://flybuy-ecommerce-backend.onrender.com/getCartList',{'userId':userDetails})
-    .then(res=>{console.log(res.data)
+    .then(res=>{//console.log(res.data)
       //let userDetails = JSON.parse(localStorage.getItem('userId'));
       //console.log(userDetails)
       if(res.data[0]!==undefined){
@@ -109,7 +109,7 @@ const CartListView = () => {
 
     })
     .catch(err=>{
-      console.log('Caart')
+      //console.log('Caart')
       if (err.message ==='Network Error'){
         
       }

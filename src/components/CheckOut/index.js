@@ -19,13 +19,13 @@ const CheckOut=()=> {
     })
     const onAddressSubmit = (e) =>{
         e.preventDefault()
-        // console.log(address)
+        // //console.log(address)
         axios.post('https://flybuy-ecommerce-backend.onrender.com/addAddress',{'address':address})
         .then(res=>{
             navigate('/Payment')
         })
         .catch(err=>{
-            console.log(err)
+            //console.log(err)
         })
     }
 

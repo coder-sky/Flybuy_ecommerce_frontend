@@ -22,7 +22,7 @@ const AllProductsSection =()=>{
   
       })
       .catch(err=>{
-        console.log('All p')
+        //console.log('All p')
         if (err.message ==='Network Error'){
           setProductList(JSON.parse(localStorage.getItem('products')))
          

@@ -14,7 +14,7 @@ const Products = () => {
 
 
   const { mode } = useContext(ModeContext)
-  console.log(mode)
+  //console.log(mode)
 
   return (
 

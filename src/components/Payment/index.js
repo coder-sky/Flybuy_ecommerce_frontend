@@ -29,7 +29,7 @@ const Payment = ()=>  {
     
     const getPrice=()=>{
         axios.post("https://flybuy-ecommerce-backend.onrender.com/getPrice",{'userId':localStorage.getItem('userId')})
-        .then(res=>{console.log(res)
+        .then(res=>{//console.log(res)
             setPrice(parseFloat(res.data.total_price))
             setPurchase_data(res.data.data)
         })
@@ -37,7 +37,7 @@ const Payment = ()=>  {
 
     const getUserDetails=()=>{
         axios.post("https://flybuy-ecommerce-backend.onrender.com/user",{'userId':localStorage.getItem('userId')})
-        .then(res=>{console.log('user',res.data)
+        .then(res=>{//console.log('user',res.data)
             setUserDetails(res.data[0])
         })
     }
@@ -53,7 +53,7 @@ const Payment = ()=>  {
             setDonePayment(true)
         }
         else if(paymentOpt==='razorpay'){
-                console.log(paymentOpt)
+                //console.log(paymentOpt)
                 var amount = price * 100; //Razorpay consider the amount in paise
             
                 var options = {
@@ -63,7 +63,7 @@ const Payment = ()=>  {
                   'order_id':"",
                   "image":"https://i.ibb.co/QrVMnhp/flybuy.png",
                   "handler": function(response) {
-                      console.log('response',response);
+                      //console.log('response',response);
                       axios.post("https://flybuy-ecommerce-backend.onrender.com/removeallCartItme",{'userId':localStorage.getItem('userId')})
                       .then(()=>{})
                       axios.post("https://flybuy-ecommerce-backend.onrender.com/addPurches",{'data':purchase_data})
@@ -85,16 +85,19 @@ const Payment = ()=>  {
                 .then(res=>{
                     options.order_id = res.data.id;
                     options.amount = res.data.amount;
-                    console.log(res)
+                    //console.log(res)
                     var rzp1 = new window.Razorpay(options);
                     rzp1.open();
                 })
-                .catch(e=>console.log(e))
+                .catch(e=>{
+                    //console.log(e))
+                }
+                )
                 
             };
         }
 
-        console.log(paymentOpt)
+        //console.log(paymentOpt)
     
 
   return (

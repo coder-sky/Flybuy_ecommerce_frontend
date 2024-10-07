@@ -19,7 +19,7 @@ const ProductItemDetails = () => {
 
   useEffect(() => {
     axios.post('https://flybuy-ecommerce-backend.onrender.com/getProductDetails', { id: id }).then((res) => {
-      console.log(res.data)
+      //console.log(res.data)
       setProductDetails(res.data.productDetails)
     })
   },[id])

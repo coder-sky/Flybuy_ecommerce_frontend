@@ -67,19 +67,19 @@ const LoginForm = () =>{
 
   const varifyOtp = (e) =>{
     e.preventDefault()
-    // console.log(typeof(OTP))
-    // console.log(typeof(authOtp))
+    // //console.log(typeof(OTP))
+    // //console.log(typeof(authOtp))
     if(OTP.length ===6){
       if (OTP===authOtp.otp){
         //console.log('success')
         //navigate('/',{ replace: true })
         axios.post('https://flybuy-ecommerce-backend.onrender.com/verifyotp',authOtp.data) //{username:'akash',password:12233,mobile:12113123})
     .then(res=>{
-      console.log(res.data.jwt_token)
+      //console.log(res.data.jwt_token)
      onLoginSuccess(res.data.jwt_token,user)
     })
     .catch(err=>{
-      console.log(err.response.data)
+      //console.log(err.response.data)
       setOtpError(err.response.data)
     })
         
@@ -102,10 +102,11 @@ const LoginForm = () =>{
     .then(res=>{
         updateProductCount(res.data.length)
     },[])
-    .catch(err=>console.log('login'))
+    .catch(err=>//console.log('login'))
     //console.log(username,password)
     navigate('/',{ replace: true }) //it won't go back
     //navigate('/')
+    )
   }
   
   const showSubmitFailure = (msg) => {
@@ -131,7 +132,7 @@ const LoginForm = () =>{
     //console.log(options.body)
     const response = await fetch(url,options)
     const data = await response.json()
-    console.log(data)
+    //console.log(data)
     //console.log(response)
     if (response.ok){
         onLoginSuccess(data.jwt_token)
@@ -143,7 +144,7 @@ const LoginForm = () =>{
   */
 
   const changeToSignUP = () =>{
-    console.log('clicked')
+    //console.log('clicked')
     setSignUpSucc({succ:false,succMsg:''})
     setSignUpError({error:false,errorMsg:''})
     setSignInError({error:false,errorMsg:''})
@@ -158,22 +159,22 @@ const LoginForm = () =>{
     e.preventDefault()
     axios.post('https://flybuy-ecommerce-backend.onrender.com/login',signInData) //{username:'akash',password:12233,mobile:12113123})
     .then(res=>{
-      console.log(res.data)
+      //console.log(res.data)
      onLoginSuccess(res.data.jwt,res.data.userId)
     })
     .catch(err=>{
-      console.log(err.response.data)
+      //console.log(err.response.data)
       showSubmitFailure(err.response.data)
     })
   }
 
   const onSignUp = (e) =>{
     e.preventDefault()
-    console.log(signUpData)
+    //console.log(signUpData)
     if (signUpData.password === signUpData.conpass){
     axios.post('https://flybuy-ecommerce-backend.onrender.com/data',signUpData) //{username:'akash',password:12233,mobile:12113123})
     .then(res=>{
-      console.log(typeof(res.data))
+      //console.log(typeof(res.data))
       if (typeof(res.data)== "string"){
       if(res.data.slice(0,16)+res.data.slice(-9,-1)==="Duplicate entry username"){
         setSignUpError({error:true,errorMsg:'*Username already exist try another...'})
@@ -191,8 +192,10 @@ const LoginForm = () =>{
     }
      
     })
-    .catch(err=>console.log(err))
+    .catch(err=>{//console.log(err))
     //console.log(username,password,mobile)
+    }
+    )
   }
   else{
     setSignUpError({error:true,errorMsg:'*Password Field Must Match'})
@@ -201,17 +204,17 @@ const LoginForm = () =>{
 
   const displayotp = (e) =>{
     e.preventDefault()
-    console.log(showotp.mobile.length)
+    //console.log(showotp.mobile.length)
     if(showotp.mobile!=='' && showotp.mobile.length === 12){
     axios.post('https://flybuy-ecommerce-backend.onrender.com/getotp',{'mobile':showotp.mobile}) //{username:'akash',password:12233,mobile:12113123})
     .then(res=>{
-      console.log(res.data.data)
+      //console.log(res.data.data)
       setShowOtp({show:true,mobile:'',error:''})
       setAuthOtp({otp:String(res.data.otp),data:res.data.data})
       setUser(res.data.userId)
     })
     .catch(err=>{
-      console.log(err.response.data)
+      //console.log(err.response.data)
       setShowOtp({...showotp,error:err.response.data})
     })}
     else{

@@ -11,7 +11,7 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 const Header = () => {
   //const { productCount } = useContext(ProductCountContext);
   const {productCount} = useContext(ProductCountContext)
-  console.log(productCount)
+  //console.log(productCount)
  
   //const [count,setCount] = useState(0)
   const history = useNavigate()

@@ -4,11 +4,11 @@ import './index.css'
 import axios from 'axios';
 
 const CategoryList = (props) => {
-  console.log(props)
+  //console.log(props)
   const {updateProductData} = props
  
   const onSelectCategory = (cat) =>{
-    console.log(cat)
+    //console.log(cat)
     axios.post('https://flybuy-ecommerce-backend.onrender.com/getcategories',{'category':cat})
     .then(res=>updateProductData(res.data.categoryData))
   }

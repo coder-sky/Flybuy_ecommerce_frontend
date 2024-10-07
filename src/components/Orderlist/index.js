@@ -15,14 +15,14 @@ import axios from "axios";
   useEffect(()=>{
     axios.post('https://flybuy-ecommerce-backend.onrender.com/getpurcheseditems',{'userId':localStorage.getItem('userId')})
     .then(res=>{
-      console.log(res)
+      //console.log(res)
       if (res.data.productData !== undefined){
       setProducts(res.data.productData)
     }
     }
     )
   },[])
-console.log(products)
+//console.log(products)
   
   return (
     
