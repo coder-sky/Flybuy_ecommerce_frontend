@@ -17,16 +17,15 @@ const CheckOut=()=> {
         zip:'',
         userId:localStorage.getItem('userId')
     })
-    const onAddressSubmit = e =>{
+    const onAddressSubmit = (e) =>{
         e.preventDefault()
-        console.log(address)
+        // console.log(address)
         axios.post('https://flybuy-ecommerce-backend.onrender.com/addAddress',{'address':address})
-        .then(res=>{console.log(res.statusText)
-            if(res.statusText==='OK'){
-                navigate('/Payment')
-
-            }
-        
+        .then(res=>{
+            navigate('/Payment')
+        })
+        .catch(err=>{
+            console.log(err)
         })
     }
 
