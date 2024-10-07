@@ -26,7 +26,7 @@ const MyOrderCart =(props)=> {
               selected={selected > i}
               onSelected={() =>{
                  setSelected(i + 1)
-                 axios.post('/updaterating',{id:p_id,itemId:i_id,rating:i+1,userId:localStorage.getItem('userId')})
+                 axios.post('https://flybuy-ecommerce-backend.onrender.com/updaterating',{id:p_id,itemId:i_id,rating:i+1,userId:localStorage.getItem('userId')})
                  .then(res=>console.log(res))
 
                 }}

@@ -8,7 +8,7 @@ const ProductCountProvider = ({ children }) => {
   const [productCount, setProductCount] = useState(0);
   try{
   useEffect(()=>{
-    axios.post('/getCartList', {'userId':localStorage.getItem('userId')})
+    axios.post('https://flybuy-ecommerce-backend.onrender.com/getCartList', {'userId':localStorage.getItem('userId')})
     .then(res=>{
         //const ids = ('map',res.data.map(itme=>parseInt(itme.productId)))
         //updateProducts(res.data.map(itme=>parseInt(itme.productId)))

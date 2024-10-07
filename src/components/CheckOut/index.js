@@ -20,7 +20,7 @@ const CheckOut=()=> {
     const onAddressSubmit = e =>{
         e.preventDefault()
         console.log(address)
-        axios.post('/addAddress',{'address':address})
+        axios.post('https://flybuy-ecommerce-backend.onrender.com/addAddress',{'address':address})
         .then(res=>{console.log(res.statusText)
             if(res.statusText==='OK'){
                 navigate('/Payment')

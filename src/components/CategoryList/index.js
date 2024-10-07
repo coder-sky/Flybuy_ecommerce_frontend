@@ -9,7 +9,7 @@ const CategoryList = (props) => {
  
   const onSelectCategory = (cat) =>{
     console.log(cat)
-    axios.post('/getcategories',{'category':cat})
+    axios.post('https://flybuy-ecommerce-backend.onrender.com/getcategories',{'category':cat})
     .then(res=>updateProductData(res.data.categoryData))
   }
   return (

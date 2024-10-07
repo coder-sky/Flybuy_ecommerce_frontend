@@ -12,7 +12,7 @@ const AllProductsSection =()=>{
 
   useEffect(()=>{
     const getProducts = ()=> {
-      axios.get('/getproducts')
+      axios.get('https://flybuy-ecommerce-backend.onrender.com/getproducts')
       .then(res=>{//console.log(res.data)
         //let userDetails = JSON.parse(localStorage.getItem('userId'));
         //console.log(userDetails)

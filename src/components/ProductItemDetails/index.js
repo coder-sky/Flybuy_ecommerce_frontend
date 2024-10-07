@@ -18,7 +18,7 @@ const ProductItemDetails = () => {
   const {productCount,updateProductCount} = useContext(ProductCountContext)
 
   useEffect(() => {
-    axios.post('/getProductDetails', { id: id }).then((res) => {
+    axios.post('https://flybuy-ecommerce-backend.onrender.com/getProductDetails', { id: id }).then((res) => {
       console.log(res.data)
       setProductDetails(res.data.productDetails)
     })
@@ -35,8 +35,8 @@ const ProductItemDetails = () => {
   }
 
   const onClickAddToCart = () => {
-    console.log('quant',quantity)
-    axios.post('/addToCart',{'id':id,'quantity':quantity,'userId':JSON.parse(localStorage.getItem('userId'))})
+    //console.log('quant',quantity)
+    axios.post('https://flybuy-ecommerce-backend.onrender.com/addToCart',{'id':id,'quantity':quantity,'userId':JSON.parse(localStorage.getItem('userId'))})
     .then(()=>{
       //console.log(productCount)
       updateProductCount(productCount+1)

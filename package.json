@@ -32,7 +32,7 @@
         "eject": "react-scripts eject",
         "start:prod": "serve -s build"
     },
-    "proxy": "https://flybuy-ecommerce-backend.onrender.com/",
+
     "eslintConfig": {
         "extends": [
             "react-app",

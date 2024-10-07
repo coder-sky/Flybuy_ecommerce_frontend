@@ -13,7 +13,7 @@ import axios from "axios";
   const [products,setProducts] = useState([])
 
   useEffect(()=>{
-    axios.post('/getpurcheseditems',{'userId':localStorage.getItem('userId')})
+    axios.post('https://flybuy-ecommerce-backend.onrender.com/getpurcheseditems',{'userId':localStorage.getItem('userId')})
     .then(res=>{
       console.log(res)
       if (res.data.productData !== undefined){
