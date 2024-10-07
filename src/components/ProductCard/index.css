@@ -101,7 +101,7 @@
 .addtocartBtn {
     display: flex;
     justify-content: center;
-    background-color: linear-gradient(bottom, #33ccff 0%, #ff99cc 100%);
+    background-color: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);
     color: black;
     border-radius: 5rem;
     padding: 10px 20px;
