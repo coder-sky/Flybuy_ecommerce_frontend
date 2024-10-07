@@ -5,14 +5,13 @@ import {AiFillCloseCircle} from 'react-icons/ai'
 import './index.css'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import { ModeContext } from '../../context/ModeContext'
 import { ProductCountContext } from '../../context/ProductCountContext';
 
 
 const CartListView = () => {
   const [addToCartList, setAddToCartList] = useState([])
   const {productCount,updateProductCount} = useContext(ProductCountContext)
-  const {updateMode}  = useContext(ModeContext)
+
 
   const onDeleteCartItem = (id) => {
     axios.post('/deleteCartItme', {'id':parseInt(id),'userId':localStorage.getItem('userId')})
@@ -86,9 +85,9 @@ const CartListView = () => {
   
       })
       .catch(err=>{
-        console.log('Caart')
+        //console.log('Caart')
         if (err.message ==='Network Error'){
-          updateMode('offline')
+         
         }
       })
   
@@ -112,7 +111,7 @@ const CartListView = () => {
     .catch(err=>{
       console.log('Caart')
       if (err.message ==='Network Error'){
-        updateMode('offline')
+        
       }
     })
 

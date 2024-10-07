@@ -1,19 +1,14 @@
-import { useContext, useEffect, useState} from 'react'
-
+import { useEffect, useState} from 'react'
 import ProductCard from '../ProductCard'
 import './index.css'
 //import Cookies from 'js-cookie'
 import axios from 'axios'
 import CategoryList from '../CategoryList'
-import { ModeContext } from '../../context/ModeContext'
-
-
 
 const AllProductsSection =()=>{
   const [productsList,setProductList] = useState([])
   const [searchInput,setSearchInput] = useState('')
-  const {mode,updateMode}  = useContext(ModeContext)
-  console.log(mode)
+
 
   useEffect(()=>{
     const getProducts = ()=> {
@@ -31,7 +26,6 @@ const AllProductsSection =()=>{
         if (err.message ==='Network Error'){
           setProductList(JSON.parse(localStorage.getItem('products')))
          
-          updateMode('offline')
          
         }
       })
