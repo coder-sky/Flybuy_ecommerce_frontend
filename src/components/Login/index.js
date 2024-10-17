@@ -96,17 +96,15 @@ const LoginForm = () =>{
   
   const onLoginSuccess = (jwtToken,userId) =>{
     
-    Cookies.set('jwt_token',jwtToken,{expires:30,secure:true,sameSite:'None'})
+    Cookies.set('jwt_token',jwtToken,{expires:30})
     localStorage.setItem('userId', JSON.stringify(userId))
     axios.post('https://flybuy-ecommerce-backend.onrender.com/getCartList', {'userId':userId})
     .then(res=>{
         updateProductCount(res.data.length)
+    },[])
+    .catch(err=>{
     })
-    .catch(err=>{})
-      //console.log('login')
-    //console.log(username,password)
-     //it won't go back
-    //navigate('/')
+    navigate('/',{ replace: true })
   }
   
   const showSubmitFailure = (msg) => {
@@ -114,34 +112,7 @@ const LoginForm = () =>{
     setSignInError({error:true,errorMsg:msg})
 
   }
- /*
-  const onChangePassword = event => {
-    setPassword((password)=>password=event.target.value)
-  }
-  
-  
-  const onSubmitForm = async event =>{
-    event.preventDefault()
-    const userDetails = {username,password}
-    //console.log(username,password)
-    const url  = 'https://apis.ccbp.in/login'
-    const options = {
-      method : 'POST',
-      body : JSON.stringify(userDetails)
-    }
-    //console.log(options.body)
-    const response = await fetch(url,options)
-    const data = await response.json()
-    //console.log(data)
-    //console.log(response)
-    if (response.ok){
-        onLoginSuccess(data.jwt_token)
-    }
-    else{
-        showSubmitFailure(data.error_msg)
-    }
-  }
-  */
+ 
 
   const changeToSignUP = () =>{
     //console.log('clicked')
